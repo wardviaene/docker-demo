@@ -6,10 +6,10 @@
     "start": "node index.js"
   },
   "engines": {
-    "node": "^0.12.7"
+    "node": "^4.6.1"
   },
   "dependencies": {
-    "express": "^4.11.0",
+    "express": "^4.14.0",
     "mysql": "^2.10.2"
   }
 }
