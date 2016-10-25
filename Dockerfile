@@ -1,6 +1,6 @@
-FROM node:0.12
+FROM node:4.6
 WORKDIR /app
 ADD . /app
 RUN npm install
 EXPOSE 3000
-CMD node index.js
+CMD npm start
