@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha"
   },
   "engines": {
     "node": "^4.6.1"
@@ -11,5 +12,8 @@
   "dependencies": {
     "express": "^4.14.0",
     "mysql": "^2.10.2"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
   }
 }
