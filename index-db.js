@@ -11,7 +11,7 @@ con.connect(function(err){
     return;
   }
   console.log('Connection to db established');
-  con.query('CREATE TABLE IF NOT EXISTS visits (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ts int)',function(err) {
+  con.query('CREATE TABLE IF NOT EXISTS visits (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, ts BIGINT)',function(err) {
     if(err) throw err;
   });
 });
