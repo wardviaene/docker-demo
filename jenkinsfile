@@ -1,0 +1,22 @@
+job('NodeJS Example') {
+
+  scm {
+    git('git://github.com/bclayton-usgs/docker-demo.git') { nod -> 
+      node / gitConfigName('Brandon Clayton')
+      node / gitConfigEmail('bclayton@usgs.gov')
+    }
+  }
+
+  triggers {
+    scm('H/5 * * * *')
+  }
+
+  wrappers {
+    nodejs('nodejs')
+  }
+
+  steps {
+    shell('npm install')
+  }
+
+}
