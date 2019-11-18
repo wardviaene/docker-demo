@@ -28,4 +28,4 @@ node {
        def app = docker.build("iwaydocker/summitt:${commit_id}", '.').push()
      }                                     
    }                                       
- }
+ 
