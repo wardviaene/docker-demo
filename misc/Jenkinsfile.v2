@@ -14,14 +14,17 @@ node {
      }
    }
    stage('test with a DB') {
-     def mysql = docker.image('mongonode:latest').run
-     def myTestContainer = docker.image('node:4.6')
-     myTestContainer.pull()
-     myTestContainer.inside("--link ${mysql.id}:mysql") { // using linking, mysql will be available at host: mysql, port: 3306
+     
+    //CREATE A MONGO DOCKER IMAGE
+    def dockerMongoImage = docker.image("mongo");
+
+    // getting our maven container
+    def myTestContainer = docker.image('node:4.6')
+
+    dockerMongoImage.withRun{ mongo ->
+       myTestContainer.inside("--link=${mongo.id}:mongo") {
           sh 'npm install --only=dev' 
-          sh 'npm test'                     
-     }                                   
-     mysql.stop()
+          sh 'npm test'      
    }                                     
    stage('docker build/push') {            
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
