@@ -13,16 +13,12 @@ node {
        sh 'npm test'
      }
    }
-   stage('test with a DB') {
-     
+     stage('test with a DB') {     
     //CREATE A MONGO DOCKER IMAGE
     def dockerMongoImage = docker.image("mongo");
-
     // getting our maven container
-    def myTestContainer = docker.image('node:4.6')
-
-    dockerMongoImage.withRun{ mongo ->
-       myTestContainer.inside("--link=${mongo.id}:mongo") {
+    def myTestContainer = docker.image('node:4.6'){
+    dockerMongoImage.withRun{ mongo ->update
           sh 'npm install --only=dev' 
           sh 'npm test'      
    }   
