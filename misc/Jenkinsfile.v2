@@ -23,7 +23,7 @@ node {
           sh 'npm install --only=dev' 
           sh 'npm test'     
     }                             
-    mongo.stop()
+   
     }   
    }                                     
    stage('docker build/push') {            
