@@ -16,7 +16,10 @@ node {
    stage('test with a DB') {
      //CREATE A MONGO DOCKER IMAGE
     def dockerMongoImage = docker.image("mongo")
-    def myTestContainer = docker.image('node:4.6'){}
+    def myTestContainer = docker.image('node:4.6'){
+        sh 'npm install --only=dev' 
+          sh 'npm test' 
+    }
    }                                     
    stage('docker build/push') {            
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
