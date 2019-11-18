@@ -14,7 +14,7 @@ node {
      }
    }
    stage('test with a DB') {
-      def mongo = docker.image("mongo").run
+      def mongo = docker.image("mongo").run()
     def myTestContainer = docker.image('node:4.6') 
     def dockerMongoImage = docker.image("mongo").run
     myTestContainer.pull()
