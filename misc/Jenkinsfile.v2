@@ -14,12 +14,16 @@ node {
      }
    }
    stage('test with a DB') {
-     //CREATE A MONGO DOCKER IMAGE
-    def dockerMongoImage = docker.image("mongo")
-    def myTestContainer = docker.image('node:4.6'){
-        sh 'npm install --only=dev' 
-          sh 'npm test' 
-    }
+      def mongo = docker.image("mongo").run
+    def myTestContainer = docker.image('node:4.6') 
+    def dockerMongoImage = docker.image("mongo").run
+    myTestContainer.pull()
+     myTestContainer.inside("--link ${mongo.id}:mongo") {  
+          sh 'npm install --only=dev' 
+          sh 'npm test'                     
+     }                                   
+     mongo.stop()
+    
    }                                     
    stage('docker build/push') {            
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
