@@ -14,7 +14,8 @@ node {
      }
    }
    stage('test with a DB') {
-     
+     //CREATE A MONGO DOCKER IMAGE
+    def dockerMongoImage = docker.image("mongo")
    }                                     
    stage('docker build/push') {            
      docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
