@@ -6,7 +6,7 @@ node {
      commit_id = readFile('.git/commit-id').trim()
    }
    
-   stage('test with a DB') {
+   stage('Run tests with a Mongo DB') {
       def dockerMongoImage = docker.image("mongo")
       def myTestContainer = docker.image('node:4.6') 
      myTestContainer.pull()
