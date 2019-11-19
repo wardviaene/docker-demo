@@ -5,11 +5,7 @@ node {
      sh "git rev-parse --short HEAD > .git/commit-id"
      commit_id = readFile('.git/commit-id').trim()
    }
-   wrappers {
-        environmentVariables {
-            env('auth', 'something I want to set')
-        }
-    }
+   
    stage('Run tests with a Mongo DB') {
       def dockerMongoImage = docker.image("mongo")
       def myTestContainer = docker.image('node:4.6') 
