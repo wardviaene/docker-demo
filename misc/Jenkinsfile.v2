@@ -13,6 +13,7 @@ node {
      dockerMongoImage.pull()
     dockerMongoImage.withRun{mongo -> 
       myTestContainer.inside("--link=${mongo.id}:mongo") {
+        sh 'npm ci'
           sh 'npm install --only=dev' 
           sh 'npm test'     
     }                             
