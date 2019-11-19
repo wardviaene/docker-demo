@@ -9,12 +9,13 @@ node {
    stage('Run tests with a Mongo DB') {
       def dockerMongoImage = docker.image("mongo")
       def myTestContainer = docker.image('node:4.6') 
-     myTestContainer.pull()
-     dockerMongoImage.pull()
-    dockerMongoImage.withRun{mongo -> 
+      myTestContainer.pull()
+      dockerMongoImage.pull()
+      
+      dockerMongoImage.withRun{mongo -> 
       myTestContainer.inside("--link=${mongo.id}:mongo") {
-        sh 'npm whoami'
-          sh 'npm install --only=dev' 
+     
+          sh 'npm install -g npm-cli-login --only=dev' 
           sh 'npm test'     
     }                             
    
