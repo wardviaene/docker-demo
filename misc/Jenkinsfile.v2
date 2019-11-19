@@ -14,7 +14,7 @@ node {
       
       dockerMongoImage.withRun{mongo -> 
       myTestContainer.inside("--link=${mongo.id}:mongo") {
-     
+        sh 'printenv | sort'
           sh 'npm install -g npm-cli-login --only=dev' 
           sh 'npm test'     
     }                             
