@@ -15,7 +15,7 @@
     "mysql": "^2.10.2"
   },
   "devDependencies": {
-    "inherits": "^2.0.3",
+    "inherits": "^2.0.4",
     "mocha": "^5.2.0",
     "ms": "^2.1.1"
   }
