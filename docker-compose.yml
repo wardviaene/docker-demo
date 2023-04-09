@@ -11,10 +11,11 @@ web:
     MYSQL_PASSWORD: mysecurepass
     MYSQL_HOST: db
 db:
-  image: orchardup/mysql
+  image: mysql:8
   ports:
     - "3306:3306"
   environment:
     MYSQL_DATABASE: myapp
     MYSQL_USER: myapp
     MYSQL_PASSWORD: mysecurepass
+    MYSQL_ROOT_PASSWORD: securerootpass
