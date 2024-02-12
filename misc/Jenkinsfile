@@ -13,7 +13,6 @@ node {
    }
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
-       sh 'docker login'
        def app = docker.build("alisaleh55555/nodjs-jenkins-demo:${commit_id}", '.').push()
      }
    }
